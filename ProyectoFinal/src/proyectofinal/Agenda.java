@@ -12,12 +12,28 @@ import entidades.ContactosDB;
  * @author Gael
  */
 public class Agenda {
-    
-    public void agregar(){
+
+    public void agregar(Integer id, String nombre, String numero) {
         UserControlador db = new UserControlador();
-        ContactosDB eliminar = new ContactosDB(1);
-        db.eliminar(eliminar);
+        ContactosDB agregar = new ContactosDB(id, nombre, numero);
+        db.crear(agregar);
     }
-    
-    
+
+    public void modificar(Integer id) {
+        UserControlador db = new UserControlador();
+        ContactosDB agregar = new ContactosDB(id);
+        db.editar(agregar);
+    }
+
+    public void eliminar(Integer id) {
+
+    }
+
+    public void listar() {
+
+    }
+
+    public void verContacto(Integer id) {
+
+    }
 }

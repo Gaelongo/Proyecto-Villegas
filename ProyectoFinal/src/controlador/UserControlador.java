@@ -46,7 +46,7 @@ public class UserControlador {
         EntityManager en = entityManager();
         try{
             en.getTransaction().begin();
-            en.remove(u);
+            en.remove(en.merge(u));
             en.getTransaction().commit();
         } catch(Exception e){
             //en.getTransaction().rollback();

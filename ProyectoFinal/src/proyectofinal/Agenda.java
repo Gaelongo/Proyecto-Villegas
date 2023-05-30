@@ -28,7 +28,9 @@ public class Agenda {
 
     public void eliminar(Integer id) {
         UserControlador db = new UserControlador();
-        db.eliminar(eliminarContacto(id));
+        ContactosDB contacto = new ContactosDB(eliminarContacto(id).getIdContacto(), eliminarContacto(id).getNombreContacto(), eliminarContacto(id).getNumeroContacto());
+        System.out.println(contacto.getNombreContacto());
+        db.eliminar(contacto);
     }
 
     public void listar() {
@@ -36,6 +38,7 @@ public class Agenda {
         List<ContactosDB> contactos = db.todosLosUsuarios();
         for (ContactosDB contacto : contactos) {
             System.out.println("");
+            System.out.println("ID: " + contacto.getIdContacto());
             System.out.println("Nombre: " + contacto.getNombreContacto());
             System.out.println("Numero: " + contacto.getNumeroContacto());
             System.out.println("--------------------------");

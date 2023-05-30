@@ -20,16 +20,15 @@ public class Agenda {
         db.crear(agregar);
     }
 
-    public void modificar(Integer id) {
+    public void modificar(Integer id, String nombre, String numero) {
         UserControlador db = new UserControlador();
-        ContactosDB modificar = new ContactosDB(id);
+        ContactosDB modificar = new ContactosDB(id, nombre, numero);
         db.editar(modificar);
     }
 
     public void eliminar(Integer id) {
         UserControlador db = new UserControlador();
-        ContactosDB eliminar = new ContactosDB(id);
-        db.eliminar(eliminar);
+        db.eliminar(eliminarContacto(id));
     }
 
     public void listar() {
@@ -55,5 +54,15 @@ public class Agenda {
                 System.out.println("--------------------------");
             }
         }
+    }
+    public ContactosDB eliminarContacto(Integer id) {
+        UserControlador db = new UserControlador();
+        List<ContactosDB> contactos = db.todosLosUsuarios();
+        for (ContactosDB contacto : contactos) {
+            if (contacto.getIdContacto() == id) {
+                return contacto;
+            }
+        }
+        return null;
     }
 }

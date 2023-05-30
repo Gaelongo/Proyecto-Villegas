@@ -37,7 +37,7 @@ public class ProyectoFinal {
             switch (op) {
                 case 1:
                     System.out.println("----VER CONTACTO----");
-                    System.out.println("Ingresa el numero de telefono:");
+                    System.out.println("Ingresa el numero de ID:");
                     id = leer.nextInt();
                     ag.verContacto(id);
                     break;
@@ -61,8 +61,12 @@ public class ProyectoFinal {
                     System.out.println("----MODIFICAR CONTACTO----");
                     System.out.println("Ingresa el nombre del contacto que deseas editar:");
                     id = leer.nextInt();
+                    System.out.println("Ingresa el nuevo nombre:");
+                    nombre = leer.next();
+                    System.out.println("Ingresa el nuevo numero de telefono:");
+                    numero = leer.next();
 
-                    ag.modificar(id);
+                    ag.modificar(id, nombre, numero);
                     break;
                 case 4:
                     System.out.println("----ELIMINAR CONTACTO----");

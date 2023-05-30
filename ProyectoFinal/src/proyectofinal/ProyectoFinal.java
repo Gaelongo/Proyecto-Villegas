@@ -15,13 +15,12 @@ public class ProyectoFinal {
     /**
      * @param args the command line arguments
      */
-
     public void menu() {
 
         Scanner leer = new Scanner(System.in);
         int op = 0;
         String numero, nombre;
-        Integer id;
+        Integer id=0;
         Agenda ag = new Agenda();
         // String
         do {
@@ -39,8 +38,8 @@ public class ProyectoFinal {
                 case 1:
                     System.out.println("----VER CONTACTO----");
                     System.out.println("Ingresa el numero de telefono:");
-                    nombre = leer.next();
-                    ag.verContacto(nombre);
+                    id = leer.nextInt();
+                    ag.verContacto(id);
                     break;
                 case 2:
                     System.out.println("----AGREGAR CONTACTOS----");
@@ -51,23 +50,25 @@ public class ProyectoFinal {
 
                     System.out.println("Ingresa el numero de telefono:");
                     numero = leer.next();
-
-                    id = Integer.parseInt(nombre.toLowerCase().trim());
+                    for (int i = 0; i < nombre.length(); i++) {
+                        id += nombre.toLowerCase().trim().charAt(i);
+                    }
+                    //System.out.println(id);
                     ag.agregar(id, nombre, numero);
 
                     break;
                 case 3:
                     System.out.println("----MODIFICAR CONTACTO----");
                     System.out.println("Ingresa el nombre del contacto que deseas editar:");
-                    nombre = leer.next();
+                    id = leer.nextInt();
 
-                    ag.modificar(nombre);
+                    ag.modificar(id);
                     break;
                 case 4:
                     System.out.println("----ELIMINAR CONTACTO----");
                     System.out.println("Ingresa el nombre del contacto que deseas eliminar:");
-                    nombre = leer.next();
-                    ag.eliminar(nombre);
+                    id = leer.nextInt();
+                    ag.eliminar(id);
                     break;
                 case 5:
                     System.out.println("----LISTAR CONTACTOS----");
@@ -83,7 +84,8 @@ public class ProyectoFinal {
     }
 
     public static void main(String[] args) {
-
+        ProyectoFinal pf = new ProyectoFinal();
+        pf.menu();
     }
 
 }
